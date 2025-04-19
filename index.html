@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GOMIN Letter - 마음의 우체국</title>
+  <style>
+    body { font-family: sans-serif; background: #fff5f9; padding: 2rem; color: #333; }
+    .container { max-width: 600px; margin: auto; background: white; padding: 2rem; border-radius: 1rem;
+                 box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; }
+    textarea, select, button {
+      width: 100%; padding: 0.75rem; margin-top: 1rem;
+      border-radius: 0.5rem; border: 1px solid #ccc;
+    }
+    button {
+      background-color: #ff8fab; color: white; font-weight: bold;
+      cursor: pointer;
+    }
+    .reply {
+      background: #fef1f5; padding: 1rem; border-left: 4px solid #ffafcc;
+      margin-top: 2rem; border-radius: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>💌 GOMIN Letter</h2>
+    <p>지금 당신의 마음을 적어주세요. 보리가 답장해줄게요.</p>
+    <textarea id="letter" placeholder="나 요즘 이런 마음이야..."></textarea>
+
+    <label for="emotion">지금 감정은?</label>
+    <select id="emotion">
+      <option>🌧 위로받고 싶어요</option>
+      <option>🤐 그냥 들어주세요</option>
+      <option>🧭 방향이 필요해요</option>
+      <option>💞 공감이 그리워요</option>
+    </select>
+
+    <button onclick="generateReply()">답장 받기</button>
+
+    <div class="reply" id="replyBox" style="display:none;">
+      <strong>보리의 답장:</strong>
+      <p id="replyText"></p>
+    </div>
+  </div>
+
+  <script>
+    function generateReply() {
+      const emotion = document.getElementById("emotion").value;
+      const replyBox = document.getElementById("replyBox");
+      const replyText = document.getElementById("replyText");
+
+      let reply = "";
+      if (emotion.includes("위로")) {
+        reply = "그 감정, 정말 이해돼요. 너무 애썼어요.";
+      } else if (emotion.includes("그냥")) {
+        reply = "꺼내줘서 고마워요. 아무 말 없이 들어줄게요.";
+      } else if (emotion.includes("방향")) {
+        reply = "혹시 이렇게 해보는 건 어때요? 작은 변화부터 시작해요.";
+      } else if (emotion.includes("공감")) {
+        reply = "저도 그런 밤을 보낸 적 있어요. 말없이 마음이 닮았네요.";
+      }
+
+      replyText.innerText = reply;
+      replyBox.style.display = "block";
+    }
+  </script>
+</body>
+</html>
